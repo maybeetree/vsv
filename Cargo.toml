@@ -12,7 +12,7 @@ categories = ["command-line-utilities"]
 [dependencies]
 anyhow = "1.0.100"
 clap = { version = "4.5.53", features = ["cargo", "derive"] }
-dirs = "4.0.0"
+dirs = "6.0.0"
 libc = "0.2.119"
 rayon = "1.5.1"
 yansi = "0.5.0"
