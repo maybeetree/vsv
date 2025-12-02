@@ -8,7 +8,7 @@
 
 use std::path;
 
-use clap::{Parser, Subcommand, ArgAction, value_parser};
+use clap::{ArgAction, Parser, Subcommand};
 
 #[derive(Debug, Parser)]
 #[clap(author, version, about, verbatim_doc_comment, long_about = None)]

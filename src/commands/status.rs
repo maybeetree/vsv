@@ -8,7 +8,7 @@
 
 use anyhow::{Context, Result};
 use rayon::prelude::*;
-use yansi::{Style, Paint};
+use yansi::{Paint, Style};
 
 use crate::config::Config;
 use crate::runit;

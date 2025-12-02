@@ -13,7 +13,7 @@ use std::process::{Command, ExitStatus};
 use std::time::Duration;
 
 use anyhow::{anyhow, Context, Result};
-use yansi::{Style, Paint};
+use yansi::{Paint, Style};
 
 /**
  * A `println!()`-like macro that will only print if `-v` is set.

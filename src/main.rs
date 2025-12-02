@@ -13,7 +13,7 @@
 #![allow(clippy::uninlined_format_args)]
 
 use anyhow::{Context, Result};
-use yansi::{Color, Paint};
+use yansi::Paint;
 
 mod arguments;
 mod commands;

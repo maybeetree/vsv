@@ -44,7 +44,8 @@ pub fn do_external(cfg: &Config) -> Result<()> {
             &cfg.svdir,
             sv,
             &args_s
-        ).cyan()
+        )
+        .cyan()
     );
 
     // run the actual program
