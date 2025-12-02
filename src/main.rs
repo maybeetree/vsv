@@ -29,7 +29,7 @@ use utils::verbose;
 
 fn do_main() -> Result<()> {
     // disable color until we absolutely know we want it
-    Paint::disable();
+    yansi::disable();
 
     // parse CLI options + env vars
     let args = arguments::parse();
@@ -38,7 +38,7 @@ fn do_main() -> Result<()> {
 
     // toggle color if the user wants it or the env dictates
     if cfg.colorize {
-        Paint::enable();
+        yansi::enable();
     }
 
     verbose!(
@@ -62,6 +62,6 @@ fn main() {
     let ret = do_main();
 
     if let Err(err) = ret {
-        die!(1, "{}: {:?}", Color::Red.paint("error"), err);
+        die!(1, "{}: {:?}", "error".red(), err);
     }
 }

@@ -13,7 +13,7 @@ use std::process::{Command, ExitStatus};
 use std::time::Duration;
 
 use anyhow::{anyhow, Context, Result};
-use yansi::Style;
+use yansi::{Style, Paint};
 
 /**
  * A `println!()`-like macro that will only print if `-v` is set.
@@ -22,7 +22,7 @@ macro_rules! verbose {
     ($cfg:expr, $fmt:expr $(, $args:expr )* $(,)? ) => {
         if $cfg.verbose > 0 {
             let s = format!($fmt $(, $args)*);
-            eprintln!(">  {}", ::yansi::Style::default().dimmed().paint(s));
+            eprintln!(">  {}", s.dim());
         }
     };
 }
@@ -73,10 +73,10 @@ pub fn format_status_line<T: AsRef<str>>(
 
     for ((text, style), max, suffix) in data {
         let column = if max == 0 {
-            format!(" {}", style.paint(text.as_ref()))
+            format!(" {}", text.as_ref().paint(style))
         } else {
             let text = trim_long_string(text.as_ref(), max, suffix);
-            format!(" {0:1$}", style.paint(text), max)
+            format!(" {0:1$}", text.paint(style), max)
         };
 
         line.push_str(&column);
