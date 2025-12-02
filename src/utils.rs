@@ -6,7 +6,7 @@
 
 //! Contains various util functions for vsv.
 
-use libc::{c_int, pid_t};
+use libc::pid_t;
 use std::fs;
 use std::path::Path;
 use std::process::{Command, ExitStatus};
@@ -279,23 +279,6 @@ pub fn trim_long_string(s: &str, limit: usize, suffix: &str) -> String {
     )
 }
 
-/**
- * Check if the given file descriptor (by number) is a tty.
- *
- * # Example
- *
- * Print "hello world" if stdout is a tty:
- *
- * ```
- * if isatty(1) {
- *     println!("hello world");
- * }
- * ```
- */
-pub fn isatty(fd: c_int) -> bool {
-    unsafe { libc::isatty(fd) != 0 }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -367,13 +350,6 @@ mod tests {
         assert!(c.is_err(), "program generates an error");
 
         Ok(())
-    }
-
-    #[test]
-    fn test_isatty_bad_fd() {
-        let b = isatty(-1);
-
-        assert!(!b, "fd -1 is not a tty");
     }
 
     #[test]

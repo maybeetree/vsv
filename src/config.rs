@@ -16,12 +16,13 @@ use std::env;
 use std::ffi::OsString;
 use std::fmt;
 use std::path::PathBuf;
+use std::io;
+use std::io::IsTerminal;
 
 use anyhow::{bail, Context, Result};
 
 use crate::arguments::{Args, Commands};
 use crate::config;
-use crate::utils;
 
 // default values
 pub const DEFAULT_SVDIR: &str = "/var/service";
@@ -190,7 +191,7 @@ fn should_colorize_output(color_arg: &Option<String>) -> Result<bool> {
     }
 
     // lastly check if stdout is a tty
-    let isatty = utils::isatty(1);
+    let isatty = io::stdout().is_terminal();
 
     Ok(isatty)
 }
